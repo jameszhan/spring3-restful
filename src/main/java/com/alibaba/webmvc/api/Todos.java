@@ -29,7 +29,7 @@ public class Todos {
     private static AtomicLong nextId = new AtomicLong(0);
 
     public static final Cache<Long, Todo> todos = CacheBuilder.newBuilder().build();
-    {
+    static {
         todos.put(nextId.incrementAndGet(), Todo.build(nextId.get(), "Concrete Mathematics", "Classic"));
         todos.put(nextId.incrementAndGet(), Todo.build(nextId.get(), "Languages and Machines", "Classic"));
     }

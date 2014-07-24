@@ -101,7 +101,9 @@
         </property>
         <property name="messageConverters">
             <list>
-                <bean class="com.alibaba.webmvc.extension.FastJsonHttpMessageConverter" />
+                <bean class="com.alibaba.webmvc.extension.FastJsonHttpMessageConverter">
+                    <property name="prettyPrint" value="true" />
+                </bean>
             </list>
         </property>
     </bean>
