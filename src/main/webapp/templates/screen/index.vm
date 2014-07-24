@@ -38,6 +38,6 @@ $page.setTitle('RESTful Friendly Sample').addScript('/static/js/page/app/books/m
         </tbody>
     </table>
 
-    <a class="btn btn-primary btn-xs" data-target="#mdModal" data-toggle="modal" href="/api/todos/new.htm">添加图书</a>
+    <a class="btn btn-primary btn-xs" data-target="#mdModal" data-toggle="modal" href="/api/todos/new.htm">添加TODO</a>
     <a class="btn btn-default btn-xs" data-preview="/api/todos.json">查看所有</a>
 </div>

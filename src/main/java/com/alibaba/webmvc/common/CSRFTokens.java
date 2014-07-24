@@ -34,7 +34,7 @@ public class CSRFTokens {
             LOGGER.info("CSRF TOKEN Check: Request({}) <-> Session({})", csrfToken, currentCsrfToken);
             return csrfToken.equals(currentCsrfToken);
         }
-        return !allowNull && validateAuthenticityToken(request);
+        return allowNull || validateAuthenticityToken(request);
     }
 
     public static boolean validateCSRFToken(HttpServletRequest request){
