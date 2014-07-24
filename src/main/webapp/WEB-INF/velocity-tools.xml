@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolbox>
+    <tool>
+        <key>copyright</key>
+        <class>com.alibaba.webmvc.velocity.CopyrightTool</class>
+        <scope>application</scope>
+    </tool>
+    <tool>
+        <key>page</key>
+        <class>com.alibaba.webmvc.velocity.PageTool</class>
+        <scope>request</scope>
+    </tool>
+    <tool>
+        <key>csrfToken</key>
+        <class>com.alibaba.webmvc.velocity.CSRFTokenTool</class>
+        <scope>request</scope>
+    </tool>
+    <tool>
+        <key>stringUtils</key>
+        <class>com.alibaba.webmvc.velocity.StringUtilsTool</class>
+        <scope>request</scope>
+    </tool>
+</toolbox>

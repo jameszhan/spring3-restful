@@ -1,0 +1,19 @@
+#noLayout()
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title" id="myModalLabel">查看待办事项</h4>
+</div>
+<div class="modal-body">
+    <div class="row form-group">
+        <label class="control-label col-sm-3" for="todo_name">名称</label>
+        <div class="col-sm-9">$!todo.name</div>
+    </div>
+    <div class="row form-group">
+        <label class="control-label col-sm-3" for="todo_desc">描述</label>
+        <div class="col-sm-9">$!todo.desc</div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+    <button type="submit" class="btn btn-primary">保存</button>
+</div>

@@ -1,0 +1,37 @@
+<form accept-charset="UTF-8" action="${action}" class="form-horizontal" data-remote="true" id="todo_form" method="${method}">
+    #standardHiddenFields()
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">$!formName</h4>
+    </div>
+    <div class="modal-body">
+        <div class="field form-group">
+            <label class="control-label col-sm-3" for="todo_name">名称</label>
+            <div class="col-sm-9">
+                <input class="form-control" value="$!todo.name" value="" id="todo_name" name="name" type="text" />
+            </div>
+        </div>
+        <div class="field form-group">
+            <label class="control-label col-sm-3" for="todo_desc">描述</label>
+            <div class="col-sm-9">
+                <textarea class="form-control" id="todo_desc" name="desc" rows="8">$!todo.desc</textarea>
+            </div>
+        </div>
+        <div class="field form-group">
+            <label class="control-label col-sm-3" for="todo_priority">优先级</label>
+            <div class="col-sm-9">
+                <select name="priority" id="todo_priority">
+                    <optgroup label="优先级">
+                        <option value="0">紧急</option>
+                        <option value="5">一般</option>
+                        <option value="10">来日方长</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+</form>

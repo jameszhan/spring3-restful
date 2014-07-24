@@ -1,0 +1,63 @@
+#** -------------------------------------------
+ * No Layout
+ * -------------------------------------------- *#
+#macro (noLayout)
+#set($layout = "empty.vm")
+#end
+ #** -------------------------------------------
+ * 显示所有headers
+ * -------------------------------------------- *#
+#macro (standardHead $defaultTitle)
+<title>${stringUtils.defaultIfBlank($page.title, $defaultTitle)}</title>
+<meta charset="GBK" >
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="${csrfToken.uniqueToken}" name="csrf-token" />
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+<![endif]-->
+#showMetaTags()
+#showHttpEquiv()
+#showStylesheets()
+#showJavascripts()
+#end
+#** --------------------------------------
+ *  标准Form的隐藏域
+ *  -------------------------------------- *#
+#macro (standardHiddenFields)
+<div style="display:none">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <input name="authenticity_token" type="hidden" value="$csrfToken.uniqueToken" />
+</div>
+#end
+#** -------------------------------------------
+ * 显示meta tags
+ * -------------------------------------------- *#
+#macro (showMetaTags)
+#foreach($metaTag in $page.metaTags.keySet())
+<meta name="$metaTag" content="$page.metaTags.get($metaTag)" />
+#end
+#end
+#** -------------------------------------------
+ * 显示meta http-equiv
+ * -------------------------------------------- *#
+#macro (showHttpEquiv)
+#foreach($httpEquiv in $page.httpEquivs.keySet())
+<meta http-equiv="$httpEquiv" content="$page.httpEquivs.get($httpEquiv)" />
+#end
+#end
+#** -------------------------------------------
+ * 显示stylesheets
+ * -------------------------------------------- *#
+#macro (showStylesheets)
+#foreach($stylesheet in $page.styleSheets)
+<link data-sc-pos="head" href="$!stylesheet.url" type="$!stylesheet.type" media="$!stylesheet.media" rel="stylesheet" />
+#end
+#end
+#** -------------------------------------------
+ * 显示javascripts
+ * -------------------------------------------- *#
+#macro (showJavascripts)
+#foreach($script in $page.scripts)
+<script data-sc-pos="footer" src="$script" type="text/javascript"></script>
+#end
+#end

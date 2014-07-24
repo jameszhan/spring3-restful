@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+#parse('macros.vm')
+<head>
+    $!page.addStyleSheet('/static/css/page/app/merge.css').addStyleSheet('/static/css/page/app/main.css')
+    #standardHead("Webx Style Guide")
+</head>
+
+<body>
+#include("control/_header.vm")
+
+<div class="container">
+    $screen_placeholder
+
+    <pre class="row box" id="ajaxLogger">
+    </pre>
+</div>
+
+<div class="modal fade dynamic" id="smModal" tabindex="-1" role="dialog" aria-labelledby="smModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<div class="modal fade dynamic" id="mdModal" tabindex="-1" role="dialog" aria-labelledby="mdModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="previewModel" tabindex="-1" role="dialog" aria-labelledby="mdModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Preview</h4>
+            </div>
+            <div class="modal-body">
+                <pre></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade dynamic" id="lgModal" tabindex="-1" role="dialog" aria-labelledby="lgModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
