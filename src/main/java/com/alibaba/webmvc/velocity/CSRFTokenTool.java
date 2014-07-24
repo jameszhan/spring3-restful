@@ -1,11 +1,6 @@
-/*
- * Copyright 1999-2004 Alibaba.com All right reserved. This software is the confidential and proprietary information of
- * Alibaba.com ("Confidential Information"). You shall not disclose such Confidential Information and shall use it only
- * in accordance with the terms of the license agreement you entered into with Alibaba.com.
- */
 package com.alibaba.webmvc.velocity;
 
-import com.alibaba.webmvc.common.CSRFTokens;
+import com.alibaba.webmvc.extension.CSRFTokens;
 import org.apache.velocity.tools.view.ViewContext;
 
 import javax.servlet.http.HttpServletRequest;

@@ -36,7 +36,7 @@
         </property>
     </bean>
 
-    <bean id="exceptionResolver" class="com.alibaba.webmvc.common.WebflowExceptionHandler"/>
+    <bean id="exceptionResolver" class="com.alibaba.webmvc.extension.WebflowExceptionHandler"/>
 
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="1" />
@@ -56,7 +56,7 @@
         </property>
         <property name="defaultViews">
             <list>
-                <bean class="com.alibaba.webmvc.common.MappingFastJsonView" />
+                <bean class="com.alibaba.webmvc.extension.MappingFastJsonView" />
                 <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
                     <constructor-arg>
                         <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
@@ -86,12 +86,10 @@
         <property name="contentType" value="text/html;charset=UTF-8" />
     </bean>
 
-
-    <!-- 启用基于注解的处理器映射，添加拦截器，类级别的处理器映射 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
         <property name="interceptors">
             <list>
-                <bean class="com.alibaba.webmvc.common.CSRFInterceptor" />
+                <bean class="com.alibaba.webmvc.extension.CSRFInterceptor" />
             </list>
         </property>
     </bean>
@@ -99,7 +97,12 @@
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="cacheSeconds" value="0" />
         <property name="webBindingInitializer">
-            <bean class="com.alibaba.webmvc.common.DefaultWebBinding" />
+            <bean class="com.alibaba.webmvc.extension.DefaultWebBinding" />
+        </property>
+        <property name="messageConverters">
+            <list>
+                <bean class="com.alibaba.webmvc.extension.FastJsonHttpMessageConverter" />
+            </list>
         </property>
     </bean>
 

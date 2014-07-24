@@ -1,13 +1,5 @@
-/*
- * Copyright 1999-2004 Alibaba.com All right reserved. This software is the confidential and proprietary information of
- * Alibaba.com ("Confidential Information"). You shall not disclose such Confidential Information and shall use it only
- * in accordance with the terms of the license agreement you entered into with Alibaba.com.
- */
-package com.alibaba.webmvc.common;
+package com.alibaba.webmvc.extension;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.google.common.collect.ImmutableMap;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.view.AbstractView;
@@ -17,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.HashMap;
@@ -33,15 +24,9 @@ import java.util.Set;
  */
 public class MappingFastJsonView extends AbstractView {
 
-    /**
-     * Default content type: "application/json".
-     * Overridable through {@link #setContentType}.
-     */
-    public static final String DEFAULT_CONTENT_TYPE = "application/json";
+    private boolean prettyPrint = true;
 
-    private boolean prettyPrint;
-
-    private String encoding = "UTF-8";
+    private Charset charset = JSONs.DEFAULT_CHARSET;
 
     private Set<String> modelKeys;
 
@@ -51,14 +36,11 @@ public class MappingFastJsonView extends AbstractView {
 
     private boolean updateContentLength = false;
 
-    private boolean success = true;
-
-
     /**
      * Construct a new {@code MappingJacksonJsonView}, setting the content type to {@code application/json}.
      */
     public MappingFastJsonView() {
-        setContentType(DEFAULT_CONTENT_TYPE);
+        setContentType(JSONs.DEFAULT_CONTENT_TYPE);
         setExposePathVariables(false);
     }
 
@@ -141,7 +123,7 @@ public class MappingFastJsonView extends AbstractView {
     @Override
     protected void prepareResponse(HttpServletRequest request, HttpServletResponse response) {
         setResponseContentType(request, response);
-        response.setCharacterEncoding(this.encoding);
+        response.setCharacterEncoding(charset.displayName());
         if (this.disableCaching) {
             response.addHeader("Pragma", "no-cache");
             response.addHeader("Cache-Control", "no-cache, no-store, max-age=0");
@@ -186,12 +168,7 @@ public class MappingFastJsonView extends AbstractView {
      * @throws java.io.IOException if writing failed
      */
     protected void writeContent(OutputStream stream, Object value) throws IOException {
-        ImmutableMap map = ImmutableMap.of("success", success, "data", value);
-        if (prettyPrint) {
-            JSON.writeJSONStringTo(map, new OutputStreamWriter(stream, Charset.forName(this.encoding)), SerializerFeature.PrettyFormat);
-        } else {
-            JSON.writeJSONStringTo(map, new OutputStreamWriter(stream, Charset.forName(this.encoding)));
-        }
+        JSONs.writeTo(stream, value, charset, prettyPrint);
     }
 
 }

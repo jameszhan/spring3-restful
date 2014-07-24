@@ -1,13 +1,8 @@
-/*
- * Copyright 1999-2004 Alibaba.com All right reserved. This software is the confidential and proprietary information of
- * Alibaba.com ("Confidential Information"). You shall not disclose such Confidential Information and shall use it only
- * in accordance with the terms of the license agreement you entered into with Alibaba.com.
- */
 package com.alibaba.webmvc.api;
 
 import com.alibaba.webmvc.annotation.CSRFValidate;
-import com.alibaba.webmvc.common.ResourceNotFoundException;
-import com.alibaba.webmvc.common.WebflowException;
+import com.alibaba.webmvc.extension.ResourceNotFoundException;
+import com.alibaba.webmvc.extension.WebflowException;
 import com.alibaba.webmvc.model.Todo;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
